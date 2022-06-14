@@ -76,6 +76,9 @@ class ImageConverter():
             if (self.file_type == ImageType.BITMAP): #attempt opening bitmap file
                 try: #try opening file
                     self.pillow_image = Image.open(self.file_path).convert("RGBA")
+                    with_white_bg = Image.new("RGBA", self.pillow_image.size, "WHITE")
+                    with_white_bg.paste(self.pillow_image, mask=self.pillow_image)
+                    self.pillow_image = with_white_bg
                     self.conversion_image = ImageQt.ImageQt(self.pillow_image) #create conversion image
                     self.input_image = QPixmap.fromImage(self.conversion_image) #create input image
                     self.output_image = QPixmap.fromImage(self.conversion_image) #create output image
