@@ -19,12 +19,14 @@ Functions:
 Dependencies for the software:
 -	Python 3.6.2 or higher (https://www.python.org/downloads/)
 -	PyQT5 (https://pypi.org/project/PyQt5/)
-  -	"pip install PyQt5"
+    -"pip install PyQt5"
 -	Numpy (https://numpy.org/)
-  -	"pip install Numpy"
+    -"pip install Numpy"
 -	Pyserial (https://pyserial.readthedocs.io/)
-  - "pip install pyserial"
-
+    - "pip install pyserial"
+-   Pillow
+    -"pip install pillow"
+    
 Dependencies for the HP45 controller
 - Arduino IDE 1.8.12 or higher (https://www.arduino.cc/en/software)
 - Teensyduino (https://www.pjrc.com/teensy/teensyduino.html)
