@@ -23,7 +23,7 @@
 from PyQt5.QtGui import QPixmap, QColor, QImage
 from PyQt5 import QtWidgets
 import numpy as np
-from PIL import Image, ImageQt
+from PIL import Image, ImageQt, ImageOps
 from pathlib import Path
 from enum import Enum
 import sys
@@ -124,7 +124,7 @@ class ImageConverter():
         # Grayscale
         img = self.pillow_image.convert('L')
         # Threshold
-        img = img.point( lambda p: 255 if p > temp_threshold else 0 )
+        img = img.point( lambda p: 0 if p > temp_threshold else 255 )
         # To mono
         bw = img.convert('1')
         self.image_array = np.asarray(bw)
@@ -141,6 +141,7 @@ class ImageConverter():
     def ArrayToImage(self):
         """Take the conversion array and map it to a bilevel output image"""
         im = Image.fromarray(self.image_array, mode="L")
+        im = ImageOps.invert(im)
         self.output_image = QPixmap.fromImage(ImageQt.ImageQt(im))
 
     def RGBToImage(self):
